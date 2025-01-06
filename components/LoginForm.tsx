@@ -17,46 +17,52 @@ export default function LogInform() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Login attempt with:", { email, password });
+    alert("Thanks for logging in!");
   };
 
   return (
     <div
-      className="min-h-screen flex items-center  h-40 w-1/3 justify-center bg-cover bg-center"
+      className="min-h-screen flex items-center justify-center px-4 sm:px-5 md:px-20 lg:px-30 bg-cover bg-center"
       style={{
         backgroundImage: "url('/bg1.png')",
       }}
     >
-      <Card className="w-[350px]  bg-opacity-80 shadow-lg backdrop-blur-md">
+      <Card className="w-full max-w-md bg-white sm:px-5 md:px-20 lg:px-30 bg-opacity-80 shadow-lg backdrop-blur-md rounded-lg">
         <CardHeader>
-          <CardTitle >Log In</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-xl sm:text-2xl font-semibold text-gray-800">
+            Log In
+          </CardTitle>
+          <CardDescription className="text-gray-600 text-sm sm:text-base">
             Enter your credentials to access your account
           </CardDescription>
         </CardHeader>
 
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
               <Input
                 type="email"
                 placeholder="Enter your Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className="w-full border border-gray-300 rounded-md px-3 py-2 "
+                required
               />
             </div>
-            <div className="space-y-2">
+            <div>
               <Input
                 type="password"
                 placeholder="Enter your Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                className="w-full border border-gray-300 rounded-md px-3 py-2 "
+                required
               />
             </div>
             <div>
               <Button
                 type="submit"
-                className="w-full"
-                onClick={() => alert("THANKS FOR LOGGING IN")}
+                className="w-full py-2 text-black rounded-md transition duration-200"
               >
                 Log In
               </Button>

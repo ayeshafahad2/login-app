@@ -36,15 +36,15 @@ export default function SignUpForm() {
 
   return (
     <div
-      className="min-h-screen flex items-center h-40 w-1/3 justify-center bg-cover bg-center"
+      className="min-h-screen flex items-center justify-center px-4 sm:px-5 md:px-10 lg:px-20 bg-cover bg-center"
       style={{
-        backgroundImage: "url('/bg1.png')", 
+        backgroundImage: "url('/bg1.png')",
       }}
     >
-      <Card className="w-[380px] font-semibold text-2xl bg-opacity-90 shadow-lg backdrop-blur-md">
-        <CardHeader>
-          <CardTitle>{isSignUp ? "Sign Up" : "Log In"}</CardTitle>
-          <CardDescription className="font-semibold text-lg">
+      <Card className="w-full max-w-sm sm:max-w-md md:max-w-lg bg-white bg-opacity-90 rounded-lg shadow-lg">
+        <CardHeader className="text-amber-900">
+          <CardTitle className="text-xl sm:text-2xl">{isSignUp ? "Sign Up" : "Log In"}</CardTitle>
+          <CardDescription className="text-sm sm:text-base">
             {isSignUp
               ? "Create an account to get started"
               : "Enter your details to log into your account"}
@@ -53,41 +53,47 @@ export default function SignUpForm() {
 
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
+            <div>
               <Input
                 type="email"
                 placeholder="Enter your Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className="w-full border border-gray-300 rounded-md px-3 py-2"
+                required
               />
             </div>
-            <div className="space-y-2 relative">
+            <div className="relative">
               <Input
-                type={showPassword ? "text" : "password"} // Toggle password visibility
-                placeholder="Enter your password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none"
+                required
               />
               <Button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute top-0 right-2"
+                className="absolute top-1/2 right-3 -translate-y-1/2 text-sm"
               >
                 {showPassword ? "Hide" : "Show"}
               </Button>
             </div>
             {isSignUp && (
-              <div className="space-y-2 relative">
+              <div className="relative">
                 <Input
-                  type={showConfirmPassword ? "text" : "password"} // Toggle confirm password visibility
-                  placeholder="Confirm your password"
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder="Confirm your Password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="w-full border border-gray-300 rounded-md px-3 py-2"
+                  required
                 />
                 <Button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute top-0 right-2"
+                  className="absolute top-1/2 right-3 -translate-y-1/2 text-sm"
                 >
                   {showConfirmPassword ? "Hide" : "Show"}
                 </Button>
@@ -96,10 +102,7 @@ export default function SignUpForm() {
             <div>
               <Button
                 type="submit"
-                className="w-full"
-                onClick={() =>
-                  alert(isSignUp ? "Sign up form submitted" : "Login form submitted")
-                }
+                className="w-full py-2 text-black rounded-md transition duration-200"
               >
                 {isSignUp ? "Sign Up" : "Log In"}
               </Button>
@@ -111,8 +114,8 @@ export default function SignUpForm() {
                 ? "Already have an account? "
                 : "Don't have an account? "}
               <button
-                className="text-amber-900"
-                onClick={() => setIsSignUp(!isSignUp)} // Toggle between Sign Up and Login
+                className="text-blue-600 hover:underline"
+                onClick={() => setIsSignUp(!isSignUp)}
               >
                 {isSignUp ? "Log In" : "Sign Up"}
               </button>

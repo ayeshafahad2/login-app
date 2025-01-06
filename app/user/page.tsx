@@ -7,19 +7,20 @@ import { useState } from "react";
 
 export default function User() {
   const [isLogin, SetIsLogin] = useState(true);
+  
   return (
-    <div className="min-h-screen flex flex-col  items-center justify-center content-center text-black">
-      
-      <div className="mb=4">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 text-black">
+      <div className="mb-4">
         <Button
           className="text-lg text-amber-900"
-          onClick={(isLogin) => SetIsLogin(!isLogin)}
+          onClick={() => SetIsLogin(!isLogin)} // Fixing the onClick handler
           variant={"ghost"}
         >
-          {isLogin ? "Need to create an account" : "Login Your Account"}
+          {isLogin ? "Need to create an account?" : "Login to your account"}
         </Button>
       </div>
-      {isLogin ? <LoginForm/> : <SignUpForm/>}
+      {/* Conditionally render Login or SignUp form */}
+      {isLogin ? <LoginForm /> : <SignUpForm />}
     </div>
   );
 }
